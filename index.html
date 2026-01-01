@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Irina Seledkova - Visit Card</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .card {
+      text-align: center;
+      line-height: 1.3;
+      padding: 15px 20px;
+      border-radius: 12px;
+      background: #fff;
+      width: 100%;
+      max-width: 360px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      font-size: 20px;
+      margin: 0 0 3px 0;
+    }
+
+    p.role {
+      font-size: 12px;
+      color: #555;
+      margin: 0 0 8px 0;
+    }
+
+    .info {
+      margin: 4px 0;
+      font-size: 13px;
+      color: #333;
+    }
+
+    /* Infos importantes ULTRA visibles */
+    .info span.value {
+      font-weight: bold;
+      font-size: 16px; /* encore plus gros */
+      display: block;
+      margin-bottom: 2px;
+      word-break: break-word;
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      color: #007bff;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 10px; /* très discret */
+      margin-bottom: 4px;
+    }
+
+    .copy-btn:hover {
+      text-decoration: underline;
+    }
+
+    a {
+      display: inline-block;
+      margin: 3px 3px 0 3px;
+      color: #007bff;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Notification minimaliste */
+    #notification {
+      visibility: hidden;
+      background-color: #28a745;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 5px;
+      font-size: 12px;
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s, visibility 0.3s;
+      pointer-events: none;
+    }
+
+    #notification.show {
+      visibility: visible;
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Irina Seledkova</h1>
+  <p class="role">Infrastructure, Energy & Materials<br>Business Strategy Director</p>
+
+  <div class="info">
+    <span>Office: <span class="value">+33 1 61 62 79 16</span></span>
+    <button class="copy-btn" onclick="copyText('+33 1 61 62 79 16')">COPY</button>
+  </div>
+
+  <div class="info">
+    <span>Mobile: <span class="value">+33 6 33 09 81 35</span></span>
+    <button class="copy-btn" onclick="copyText('+33 6 33 09 81 35')">COPY</button>
+  </div>
+
+  <div class="info">
+    <span>Email: <span class="value">Irina.Seledkova@3ds.com</span></span>
+    <button class="copy-btn" onclick="copyText('Irina.Seledkova@3ds.com')">COPY</button>
+  </div>
+
+  <div class="info">
+    <span>Company: <span class="value">Dassault Systèmes</span></span>
+    <button class="copy-btn" onclick="copyText('Dassault Systèmes')">COPY</button>
+  </div>
+
+  <div class="info">
+    <span>Address: <span class="value">10 rue Marcel Dassault, 78140 Vélizy-Villacoublay, France</span></span>
+    <button class="copy-btn" onclick="copyText('10 rue Marcel Dassault, 78140 Vélizy-Villacoublay, France')">COPY</button>
+  </div>
+
+  <a href="https://www.3ds.com/" target="_blank">3DS.com</a>
+  <a href="https://dk.linkedin.com/in/irina-seledkova-boursier-850b433?trk=people-guest_people_search-card" target="_blank">LinkedIn</a>
+</div>
+
+<div id="notification">Copied successfully!</div>
+
+<script>
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    showNotification("Copied successfully!");
+  }).catch(() => {
+    showNotification("Failed to copy.");
+  });
+}
+
+function showNotification(message) {
+  const notif = document.getElementById('notification');
+  notif.textContent = message;
+  notif.classList.add('show');
+  setTimeout(() => {
+    notif.classList.remove('show');
+  }, 2000);
+}
+</script>
+
+</body>
+</html>
