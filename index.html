@@ -2,199 +2,214 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Irina Seledkova - Visit Card</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Irina Seledkova – Business Card</title>
+
 <style>
-  body {
-    font-family: 'Arial', sans-serif;
-    background: #1a1a1a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    padding: 10px;
-  }
+:root {
+  --bg: #f5f5f7;
+  --card-bg: #ffffff;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --border: #e5e5ea;
+  --accent: #0071e3;
+  --radius: 18px;
+}
 
-  /* Carte avec guirlande */
-  .card-wrapper {
-    position: relative;
-  }
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "Segoe UI", system-ui, sans-serif;
+}
 
-  .card-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -10px; left: -10px; right: -10px; bottom: -10px;
-    border-radius: 18px;
-    background: linear-gradient(45deg,
-      #ff3c3c, #ffdd3c, #3cff7a, #3c9cff, #ff3c3c, #ffdd3c, #3cff7a, #3c9cff);
-    background-size: 400% 400%;
-    animation: glow 6s linear infinite;
-    z-index: -1;
-  }
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  padding: 12px;
+}
 
-  @keyframes glow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
+/* Card */
+.card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,.04),
+    0 8px 24px rgba(0,0,0,.06);
+  text-align: center;
+}
 
-  .card {
-    text-align: center;
-    padding: 25px 20px;
-    border-radius: 16px;
-    background: #fff;
-    width: 100%;
-    max-width: 360px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    position: relative;
-  }
+/* Header */
+h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
 
-  h1 {
-    font-size: 24px;
-    margin: 0 0 6px 0;
-  }
+.role {
+  margin: 6px 0 26px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.45;
+}
 
-  p.role {
-    font-size: 14px;
-    color: #555;
-    margin: 0 0 18px 0;
-    line-height: 1.4;
-  }
+/* Info rows */
+.info {
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+}
 
-  .info {
-    margin: 12px 0;
-    font-size: 16px;
-    color: #333;
-  }
+.info:first-of-type {
+  border-top: none;
+}
 
-  .info span.value {
-    display: block;
-    font-weight: bold;
-    font-size: 18px;
-    margin: 4px 0;
-    word-break: break-word;
-  }
+.label {
+  font-size: 12px;
+  color: var(--muted);
+}
 
-  .copy-btn {
-    margin-top: 4px;
-    background: transparent;
-    border: 1px solid #007bff;
-    color: #007bff;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 10px; /* plus petit */
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-  }
+.value {
+  margin-top: 4px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  word-break: break-word;
+}
 
-  .copy-btn:hover {
-    background: #007bff;
-    color: #fff;
-  }
+/* Copy button (extra small) */
+.copy {
+  margin-top: 6px;
+  font-size: 9px;
+  letter-spacing: .5px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fafafa;
+  color: var(--muted);
+  cursor: pointer;
+  transition: background .2s, color .2s, border .2s;
+}
 
-  a {
-    display: inline-block;
-    margin: 8px 6px 0 6px;
-    color: #007bff;
-    text-decoration: none;
-    font-size: 14px;
-  }
+.copy:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
 
-  a:hover {
-    text-decoration: underline;
-  }
+/* Links */
+.links {
+  margin-top: 18px;
+}
 
-  /* Notification minimaliste */
-  #notification {
-    visibility: hidden;
-    background-color: #28a745;
-    color: #fff;
-    padding: 7px 14px;
-    border-radius: 6px;
-    font-size: 12px;
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    opacity: 0;
-    transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
-    pointer-events: none;
-  }
+.links a {
+  font-size: 14px;
+  color: var(--accent);
+  text-decoration: none;
+  margin: 0 10px;
+}
 
-  #notification.show {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+.links a:hover {
+  text-decoration: underline;
+}
 
+/* Toast */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  background: rgba(29,29,31,.92);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s ease;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 </style>
 </head>
+
 <body>
 
-<div class="card-wrapper">
-  <div class="card">
-    <h1>Irina Seledkova</h1>
-    <p class="role">Infrastructure, Energy & Materials<br>Business Strategy Director</p>
+<div class="card">
+  <h1>Irina Seledkova</h1>
+  <p class="role">
+    Infrastructure, Energy & Materials<br>
+    Business Strategy Director
+  </p>
 
-    <div class="info">
-      Office
-      <span class="value">+33 1 61 62 79 16</span>
-      <button class="copy-btn" onclick="copyText(this)">COPY</button>
+  <div class="info">
+    <div class="label">Office</div>
+    <div class="value">+33 1 61 62 79 16</div>
+    <button class="copy" data-copy="+33 1 61 62 79 16">COPY</button>
+  </div>
+
+  <div class="info">
+    <div class="label">Mobile</div>
+    <div class="value">+33 6 33 09 81 35</div>
+    <button class="copy" data-copy="+33 6 33 09 81 35">COPY</button>
+  </div>
+
+  <div class="info">
+    <div class="label">Email</div>
+    <div class="value">Irina.Seledkova@3ds.com</div>
+    <button class="copy" data-copy="Irina.Seledkova@3ds.com">COPY</button>
+  </div>
+
+  <div class="info">
+    <div class="label">Company</div>
+    <div class="value">Dassault Systèmes</div>
+    <button class="copy" data-copy="Dassault Systèmes">COPY</button>
+  </div>
+
+  <div class="info">
+    <div class="label">Address</div>
+    <div class="value">
+      10 rue Marcel Dassault, 78140 Vélizy-Villacoublay, France
     </div>
+    <button class="copy"
+      data-copy="10 rue Marcel Dassault, 78140 Vélizy-Villacoublay, France">
+      COPY
+    </button>
+  </div>
 
-    <div class="info">
-      Mobile
-      <span class="value">+33 6 33 09 81 35</span>
-      <button class="copy-btn" onclick="copyText(this)">COPY</button>
-    </div>
-
-    <div class="info">
-      Email
-      <span class="value">Irina.Seledkova@3ds.com</span>
-      <button class="copy-btn" onclick="copyText(this)">COPY</button>
-    </div>
-
-    <div class="info">
-      Company
-      <span class="value">Dassault Systèmes</span>
-      <button class="copy-btn" onclick="copyText(this)">COPY</button>
-    </div>
-
-    <div class="info">
-      Address
-      <span class="value">10 rue Marcel Dassault, 78140 Vélizy-Villacoublay, France</span>
-      <button class="copy-btn" onclick="copyText(this)">COPY</button>
-    </div>
-
+  <div class="links">
     <a href="https://www.3ds.com/" target="_blank">3DS.com</a>
-    <a href="https://dk.linkedin.com/in/irina-seledkova-boursier-850b433?trk=people-guest_people_search-card" target="_blank">LinkedIn</a>
+    <a href="https://www.linkedin.com/in/irina-seledkova-boursier-850b433/" target="_blank">LinkedIn</a>
   </div>
 </div>
 
-<div id="notification">Copied!</div>
+<div id="toast">Copied</div>
 
 <script>
-let notifTimeout;
+const toast = document.getElementById("toast");
+let timer;
 
-function copyText(button) {
-  const text = button.previousElementSibling.textContent;
-  navigator.clipboard.writeText(text).then(() => {
-    showNotification("Copied!");
-  }).catch(() => {
-    showNotification("Failed!");
-  });
-}
+document.addEventListener("click", e => {
+  if (!e.target.classList.contains("copy")) return;
 
-function showNotification(message) {
-  const notif = document.getElementById('notification');
-  notif.textContent = message;
-  notif.classList.add('show');
+  navigator.clipboard.writeText(e.target.dataset.copy)
+    .then(() => showToast("Copied"))
+    .catch(() => showToast("Error"));
+});
 
-  clearTimeout(notifTimeout);
-  notifTimeout = setTimeout(() => {
-    notif.classList.remove('show');
-  }, 2000);
+function showToast(text) {
+  toast.textContent = text;
+  toast.classList.add("show");
+  clearTimeout(timer);
+  timer = setTimeout(() => toast.classList.remove("show"), 1800);
 }
 </script>
 
